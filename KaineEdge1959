@@ -8,7 +8,7 @@
 <body>
     <h2>Watch My Twitch Stream</h2>
     <iframe
-        src="https://player.twitch.tv/?channel=KaineEdge1959&parent=YOUR_GITHUB_PAGES_DOMAIN"
+        src="https://player.twitch.tv/?channel=KaineEdge1959&parent=asc128.github.io"
         height="400"
         width="600"
         allowfullscreen>

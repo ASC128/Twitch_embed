@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Twitch Stream</title>
+</head>
+<body>
+    <h2>Watch My Twitch Stream</h2>
+    <iframe
+        src="https://player.twitch.tv/?channel=KaineEdge1959&parent=YOUR_GITHUB_PAGES_DOMAIN"
+        height="400"
+        width="600"
+        allowfullscreen>
+    </iframe>
+</body>
+</html>

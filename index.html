@@ -4,13 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Twitch Stream</title>
+    <style>
+        /* Make the body and iframe take up the full screen */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
 </head>
 <body>
-    <h2>Watch My Twitch Stream</h2>
     <iframe
         src="https://player.twitch.tv/?channel=KaineEdge1959&parent=asc128.github.io"
-        height="400"
-        width="600"
         allowfullscreen>
     </iframe>
 </body>

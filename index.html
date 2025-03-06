@@ -12,6 +12,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
+            background: #000;
         }
         iframe {
             width: 100%;
@@ -20,25 +21,26 @@
         }
     </style>
     <script>
-        // Function to get URL parameters
+        // Function to get URL parameters safely
         function getQueryParam(param) {
             const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
+            return urlParams.has(param) ? urlParams.get(param) : null;
         }
 
-        // Get the Twitch channel from the URL, default to a fallback channel
-        const channel = getQueryParam("channel") || "KaineEdge1959"; // Default channel
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the Twitch channel from the URL, with a default channel fallback
+            const channel = getQueryParam("channel") || "KaineEdge1959"; // Default channel
+            const parentDomain = window.location.hostname; // Detects the domain dynamically
 
-        // Auto-detect the parent domain
-        const parentDomain = window.location.hostname; // Gets the current domain dynamically
+            // Construct the Twitch embed URL
+            const twitchEmbedUrl = `https://player.twitch.tv/?channel=${channel}&parent=${parentDomain}`;
 
-        // Construct the Twitch embed URL
-        const twitchEmbedUrl = `https://player.twitch.tv/?channel=${channel}&parent=${parentDomain}`;
-
-        // Set the iframe source dynamically
-        window.onload = function () {
-            document.getElementById("twitch-iframe").src = twitchEmbedUrl;
-        };
+            // Set the iframe source dynamically
+            const twitchIframe = document.getElementById("twitch-iframe");
+            if (twitchIframe) {
+                twitchIframe.src = twitchEmbedUrl;
+            }
+        });
     </script>
 </head>
 <body>

@@ -39,25 +39,34 @@
             return urlParams.has(param) ? urlParams.get(param) : null;
         }
 
-        document.addEventListener("DOMContentLoaded", function () {
+        function loadTwitchStream() {
             const channel = getQueryParam("channel") || "KaineEdge1959"; // Default Twitch channel
-            const parentDomain = window.location.hostname; // Auto-detect domain
+            const parentDomain = window.location.hostname; // Auto-detect domain at runtime
 
-            // Construct Twitch embed URL with dynamically detected parent domain
+            // Construct Twitch embed URL
             const twitchEmbedUrl = `https://player.twitch.tv/?channel=${channel}&parent=${parentDomain}`;
 
-            // Set iframe source dynamically
-            const twitchIframe = document.getElementById("twitch-iframe");
-            if (twitchIframe) {
-                twitchIframe.src = twitchEmbedUrl;
-            } else {
-                document.querySelector('.error-message').style.display = "block";
-            }
-        });
+            // Create iframe dynamically
+            const twitchIframe = document.createElement("iframe");
+            twitchIframe.src = twitchEmbedUrl;
+            twitchIframe.allowFullscreen = true;
+            twitchIframe.sandbox = "allow-scripts allow-same-origin allow-fullscreen";
+            twitchIframe.style.width = "100%";
+            twitchIframe.style.height = "100%";
+            twitchIframe.style.border = "none";
+
+            // Append iframe to body
+            const container = document.getElementById("stream-container");
+            container.innerHTML = ""; // Clear previous content
+            container.appendChild(twitchIframe);
+        }
+
+        document.addEventListener("DOMContentLoaded", loadTwitchStream);
     </script>
 </head>
 <body>
-    <div class="error-message">Error loading Twitch stream. Please check the channel name.</div>
-    <iframe id="twitch-iframe" allowfullscreen sandbox="allow-scripts allow-same-origin allow-fullscreen"></iframe>
+    <div id="stream-container">
+        <div class="error-message">Error loading Twitch stream. Please check the channel name.</div>
+    </div>
 </body>
 </html>

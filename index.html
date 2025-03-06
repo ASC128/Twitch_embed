@@ -29,8 +29,10 @@
         // Get the Twitch channel from the URL, default to a fallback channel
         const channel = getQueryParam("channel") || "KaineEdge1959"; // Default channel
 
+        // Auto-detect the parent domain
+        const parentDomain = window.location.hostname; // Gets the current domain dynamically
+
         // Construct the Twitch embed URL
-        const parentDomain = "asc128.github.io"; // Adjust if needed
         const twitchEmbedUrl = `https://player.twitch.tv/?channel=${channel}&parent=${parentDomain}`;
 
         // Set the iframe source dynamically
